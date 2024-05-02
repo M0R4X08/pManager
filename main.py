@@ -27,6 +27,7 @@ if __name__ == "__main__":
                 password_hash = eu.hash_password(password_key)
                 with open(password_path_key, 'wb') as f:
                     f.write(password_hash)
+                    pm.clear_console()
                 break
             else:
                 print("Password cannot be empty")
@@ -38,6 +39,7 @@ if __name__ == "__main__":
                     password_hash = f.read()
                 if eu.verify_password(password_hash, password_key):
                     print("\nCorrect password\n")
+                    pm.clear_console()
                     break
                 else:
                     print("\nIncorrect password\n")
