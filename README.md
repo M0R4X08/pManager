@@ -14,3 +14,9 @@ This is a simple password manager focused on terminal usage.
 ## Requirements
 - Libraries bcrypt and cryptography
 - Python 3.11.2 or higher.
+
+## License
+
+Copyright © 2024 MOR4X08. All rights reserved.
+
+Licensed under the [CC0-1.0 License](LICENSE).
