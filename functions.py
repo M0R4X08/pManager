@@ -198,6 +198,7 @@ class Functions:
             salt_path = private_key_path + '.salt'
             with open(salt_path, 'wb') as f:
                 f.write(salt)
+                Functions.restrict_access(salt_path)
         else:
             with open(private_key_path, 'rb') as f:
                 encrypted_private_key = f.read()

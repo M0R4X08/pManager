@@ -11,7 +11,9 @@ if __name__ == "__main__":
     password_folder = "pass"
 
     pm.create_directory(key_folder)
+    pm.restrict_folder_access(key_folder)
     pm.create_directory(password_folder)
+    pm.restrict_folder_access(password_folder)
 
     private_key_path = os.path.join(key_folder, 'private_key.pem')
     public_key_path = os.path.join(key_folder, 'public_key.pem')
@@ -27,6 +29,7 @@ if __name__ == "__main__":
                 password_hash = eu.hash_password(password_key)
                 with open(password_path_key, 'wb') as f:
                     f.write(password_hash)
+                    pm.restrict_access(password_path_key)
                     pm.clear_console()
                 break
             else:
@@ -48,10 +51,14 @@ if __name__ == "__main__":
                 break
     
     private_pem, public_pem = pm.create_file_keys(private_key_path, public_key_path, password_key)
-    
+   
+    pm.restrict_access(private_key_path)
+    pm.restrict_access(public_key_path)
+   
     if not os.path.exists(password_folder_path):
         with open(password_folder_path, 'wb') as f:
             f.write(b'{}')
+            pm.restrict_access(password_folder_path)
     
     password_encrypted = pm.load_password(password_folder_path)
     while True:
