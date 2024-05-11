@@ -28,7 +28,7 @@ class Functions:
     def confirmation_master_password(cls, password_path_key):
         try:  
                 print("Insert master password:")
-                password_key = input("Password: ")
+                password_key = getpass.getpass("Password: ")
                 if not password_key:
                     raise ce.PasswordEmpty("Password cannot be empty")
                 with open(password_path_key, 'rb') as f:
